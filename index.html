@@ -1,29 +1,96 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>パスワード入力</title>
+    <title>ログイン</title>
+    <style>
+        body {
+            background-color: #808080;
+        }
+
+        form {
+            width: 400px;
+            padding: 40px 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #000;
+            text-align: center;
+        }
+
+        form h1, form p {
+            color: white;
+            font-weight: 500;
+        }
+
+        form p {
+            font-size: 10px;
+        }
+
+        form input[type="password"] {
+            border: 0;
+            background: none;
+            display: block;
+            margin: 20px auto;
+            border: 2px solid #ff69b4;
+            padding: 15px 10px;
+            width: 200px;
+            outline: none;
+            border-radius: 24px;
+            transition: 0.25s;
+            text-align: center;
+        }
+
+        form input[type="password"]:focus {
+            width: 280px;
+            background-color: #f0f8ff;
+        }
+
+        form input[type="submit"] {
+            border: 0;
+            background: none;
+            display: block;
+            margin: 20px auto;
+            border: 2px solid #f0f8ff;
+            padding: 15px 10px;
+            width: 200px;
+            outline: none;
+            color: white;
+            border-radius: 25px;
+            transition: 0.25s;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #ff69b4;
+            border: 2px solid #ff69b4;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h2>パスワードを入力してください</h2>
-        <form id="passwordForm">
-            <input type="password" id="passwordInput" placeholder="パスワード" required>
-            <br>
-            <input type="submit" value="ログイン">
-        </form>
-    </div>
+    <form id="passwordForm">
+        <h1>ログイン</h1>
+        <p>パスワードを入力してください</p>
+        <input type="password" id="passwordInput" placeholder="パスワード" required>
+        <input type="submit" value="ログイン">
+        <p id="message" style="color: white;"></p>
+    </form>
 
     <script>
         document.getElementById("passwordForm").addEventListener("submit", function(event) {
             event.preventDefault();
             var password = document.getElementById("passwordInput").value;
+            var message = document.getElementById("message");
 
             if (password === "irukakun") {
-                window.location.href = "loading.html"; // ローディングページにリダイレクト
+                message.textContent = "welcome";
+                message.style.color = "green";
+                setTimeout(function () {
+                    window.location.href = "loading.html"; // ローディングページにリダイレクト
+                }, 1000); // 1秒後にリダイレクト
             } else {
-                alert("パスワードが正しくありません");
+                message.textContent = "パスワードが違います"
             }
         });
     </script>
