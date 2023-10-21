@@ -5,15 +5,47 @@
 <head>
     <title>Loading...</title>
     <style>
-        /* ローディングアニメーションのスタイルを設定 */
-        /* ここにCSSスタイルを追加 */
+/* ローディングアニメーションの親要素 */
+.loading-container {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* 画面の高さに合わせる */
+  background-color: #333; /* 背景色を設定 */
+  color: #fff; /* テキスト色を設定 */
+  font-size: 24px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  position: relative;
+}
+
+/* ローディングアニメーションのスタイル */
+.loading-animation {
+  border: 6px solid #f3f3f3; /* ボーダーの色を設定 */
+  border-top: 6px solid #3498db; /* 上部のボーダーの色を設定 */
+  border-radius: 50%; /* 円形の形状を設定 */
+  width: 50px; /* アニメーションの幅を設定 */
+  height: 50px; /* アニメーションの高さを設定 */
+  animation: spin 2s linear infinite; /* アニメーションを適用 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
     </style>
 </head>
 <body>
     <div class="loading-container">
         <div class="loading-spinner"></div>
         <p>Loading....</p
-    </div>
+        </div>
 
     <script>
         setTimeout(function() {
