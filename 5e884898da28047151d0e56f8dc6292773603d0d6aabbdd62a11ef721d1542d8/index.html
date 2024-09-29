@@ -1,106 +1,23 @@
 <!DOCTYPE html>
-<html lang="jp">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta
-name="twitter:card" content="summary">
-
-      <meta property="op:title" content="鉄道画像">
-      <meta
-           property="og:description"
-           content="鉄道画像が載っているサイトです!">
-    <title style="color: red;">鉄道画像</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="favicon.ico">
+    <title>ファイルアップロードサイト</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-       <h1>鉄道画像</h1>
-    </header>
-    <main>
-      <section id="irukakun859">
-       <h2>阪急</h2>
-        <img src="img/nishinomiyakitaguchiDSC_6102.jpg" alt="画像がありません">
-<p>阪急は以下の企業・団体の略称。
+    <h1>ファイルをアップロード</h1>
+    <form id="fileForm">
+        <label for="fileInput">ファイルを選択:</label>
+        <input type="file" id="fileInput" name="file" required>
+        <button type="button" id="uploadButton">アップロード</button>
+    </form>
+    
+    <h2>アップロードされたファイル:</h2>
+    <ul id="fileList"></ul>
 
-          日本の鉄道事業者、阪急電鉄の略称。阪急阪神東宝グループ、阪急阪神ホールディングス。
-          日本の百貨店、阪急百貨店の略称。
-          日本のプロ野球球団、阪急軍（阪急職業野球団）→阪急ベアーズ→阪急ブレーブス（現在のオリックス・バファローズの前身）の略称。</h2>
-  </section>
-          <section id="about">
-                <h2>サファリ踊り子</h2>
-                <img src="img/b7ba897a556af4f0c1225e1b49cb01c6_l.jpg" alt="画像がありません">
-          </section>
-          <section id="today">
-                 <h2>サファリ踊り子とは?</h2>
-                 <p>サフィール踊り子号は、東京駅・新宿駅から熱海、伊東を経由して伊豆急行に乗り入れ、伊豆半島の先端、下田市にある伊豆急下田までを結ぶ特急列車です。 東京から伊豆に向かう特急といえば、従来から特急「踊り子」が一日５往復（繁忙期は増便あり）走っています。</p>
-
-          </section>
-          <section id="test1">
-            <h2>山手線</h2>
-          </section>
-          <section id="test">
-            <img src="img/8424563_src_0.jpg" alt="山手線">
-          </section>
-
-          <style>
-.wiki-citation {
-  border: 1px solid #ddd;
-  background-color: #f5f5f5;
-  padding: 15px;
-  margin-bottom: 20px;
-  font-family: Arial, sans-serif;
-}
-
-.wiki-citation .source {
-  font-weight: bold;
-  font-size: 18px;
-  color: #333;
-}
-
-.wiki-citation .author {
-  font-style: italic;
-  color: #777;
-}
-
-.wiki-citation .date {
-  color: #999;
-}
-
-.wiki-citation .content {
-  margin-top: 10px;
-  color: #555;
-}
-
-.wiki-citation .content p:first-child {
-  margin-top: 0;
-}
-
-.wiki-citation .content p:last-child {
-  margin-bottom: 0;
-}
-
-  </style>
-</head>
-        <div class"Server">
-            <button type="submit" class="btn btn-lg btn-success btn-block" control-id="ControlID-3">Renew server!</button>
-        </div>
-<body>
-  <div class="wiki-citation">
-    <span class="source">サイト作成より</span><br>
-    <span class="author">画像をwikiから文章もwikiを参考に作らしていただきました</span><br>
-    <span class="date">2023年7月1日</span><br>
-  </div>
+    <script src="config.js"></script> <!-- config.jsへのリンク -->
+    <script src="script.js"></script>
 </body>
 </html>
 
-
-    </main>
-    <aside>
-    </aside>
-    <footer
-    </footer>
-    <footer>
-    </footer>
