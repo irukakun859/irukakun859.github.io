@@ -9,7 +9,7 @@
     <h1>ファイルをアップロード</h1>
     <form id="fileForm">
         <label for="fileInput">ファイルを選択:</label>
-        <input type="file" id="fileInput" name="file" required>
+        <input type="file" id="fileInput" name="file" accept=".zip, .mp4" required> <!-- ZIPとMP4ファイルを許可 -->
         <button type="button" id="uploadButton">アップロード</button>
     </form>
     
@@ -20,4 +20,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
