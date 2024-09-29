@@ -32,81 +32,49 @@ document.getElementById('uploadButton').addEventListener('click', function () {
         localStorage.setItem('fileList', JSON.stringify(fileList));
 
         // リストにファイルを追加
-        addFileToList(fileInfo, fileList.length - 1); // インデックスを指定してファイルを追加
+        addFileToList(fileInfo);
 
         // ファイル入力をクリア
         fileInput.value = '';
     };
-    
+
     reader.readAsDataURL(file); // ファイルをBase64形式で読み込む
 });
 
 // ファイルリストを読み込む関数
 function loadFileList() {
     const fileList = JSON.parse(localStorage.getItem('fileList')) || [];
-    fileList.forEach((file, index) => {
-        addFileToList(file, index);
+    fileList.forEach(file => {
+        addFileToList(file);
     });
 }
 
 // ファイルをリストに追加する関数
-function addFileToList(file, index) {
+function addFileToList(file) {
     const li = document.createElement('li');
     li.innerHTML = `
         <span>${file.name}</span>
-        <button class="downloadButton" data-index="${index}">ダウンロード</button>
-        <button class="deleteButton" data-index="${index}">削除</button>
+        <button class="downloadButton" data-file="${file.data}">ダウンロード</button>
+        <button class="deleteButton">削除</button>
     `;
     document.getElementById('fileList').appendChild(li);
 
     // ダウンロードボタンのクリックイベントを設定
-    li.querySelector('.downloadButton').addEventListener('click', downloadFile);
-    
-    // 削除ボタンのクリックイベントを設定
-    li.querySelector('.deleteButton').addEventListener('click', deleteFile);
-}
-
-// パスワードを変数として設定
-const correctPassword = 'sakuzyo'; // パスワードをここで設定
-
-// ファイルダウンロードの関数
-function downloadFile(event) {
-    const index = event.target.getAttribute('data-index');
-    const password = prompt('ファイルをダウンロードするにはパスワードを入力してください:');
-
-    // 正しいパスワードを確認
-    if (password === correctPassword) {
-        const fileList = JSON.parse(localStorage.getItem('fileList')) || [];
-        const fileData = fileList[index].data; // Base64データを取得
-
-        // ダウンロードリンクを作成
+    li.querySelector('.downloadButton').addEventListener('click', function () {
         const link = document.createElement('a');
-        link.href = fileData;
-        link.download = fileList[index].name;
+        link.href = file.data;
+        link.download = file.name;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-    } else {
-        alert('パスワードが間違っています。');
-    }
-}
+    });
 
-// ファイル削除の関数
-function deleteFile(event) {
-    const index = event.target.getAttribute('data-index');
-    const password = prompt('ファイルを削除するにはパスワードを入力してください:');
-
-    // 正しいパスワードを確認
-    if (password === correctPassword) {
-        let fileList = JSON.parse(localStorage.getItem('fileList')) || [];
+    // 削除ボタンのクリックイベントを設定
+    li.querySelector('.deleteButton').addEventListener('click', function () {
+        const fileList = JSON.parse(localStorage.getItem('fileList')) || [];
+        const index = [...document.getElementById('fileList').children].indexOf(li);
         fileList.splice(index, 1); // ファイルをリストから削除
-
-        // 更新されたファイルリストをローカルストレージに保存
-        localStorage.setItem('fileList', JSON.stringify(fileList));
-
-        // ページを再読み込みしてファイルリストを更新
-        location.reload();
-    } else {
-        alert('パスワードが間違っています。');
-    }
+        localStorage.setItem('fileList', JSON.stringify(fileList)); // 更新
+        li.remove(); // リストから削除
+    });
 }
