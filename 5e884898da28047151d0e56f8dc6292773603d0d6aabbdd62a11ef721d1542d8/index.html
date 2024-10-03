@@ -6,17 +6,23 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <img src="logo.png" alt="サイトのロゴ" class="logo">
+        <h1>いるかファイル便</h1>
+    </header>
     <h1>ファイルをアップロード</h1>
     <form id="fileForm">
-        <label for="fileInput">ファイルを選択:</label>
-        <input type="file" id="fileInput" name="file" accept=".zip, .mp4" required> <!-- ZIPとMP4ファイルを許可 -->
+        <label for="fileInput" class="custom-file-label">ファイルを選択:</label>
+        <input type="file" id="fileInput" name="file"  multiple required>
         <button type="button" id="uploadButton">アップロード</button>
     </form>
+    <div id="fileNames"></div>
+
     
     <h2>アップロードされたファイル:</h2>
     <ul id="fileList"></ul>
 
-    <script src="config.js"></script> <!-- config.jsへのリンク -->
+    <script src="config.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
