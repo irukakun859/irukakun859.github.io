@@ -34,10 +34,11 @@ document.getElementById('uploadButton').addEventListener('click', function () {
         // リストにファイルを追加
         addFileToList(fileInfo, fileList.length - 1); // インデックスを指定してファイルを追加
 
-        // ファイル入力をクリア
+        // ファイル入力とファイル名表示をクリア
         fileInput.value = '';
+        document.getElementById('fileNames').innerHTML = ''; // ファイル名表示をクリア
     };
-    
+
     reader.readAsDataURL(file); // ファイルをBase64形式で読み込む
 });
 
@@ -61,7 +62,7 @@ function addFileToList(file, index) {
 
     // ダウンロードボタンのクリックイベントを設定
     li.querySelector('.downloadButton').addEventListener('click', downloadFile);
-    
+
     // 削除ボタンのクリックイベントを設定
     li.querySelector('.deleteButton').addEventListener('click', deleteFile);
 }
@@ -110,3 +111,22 @@ function deleteFile(event) {
         alert('パスワードが間違っています。');
     }
 }
+
+// ファイル選択時にファイル名を表示
+document.getElementById('fileInput').addEventListener('change', function () {
+    const fileInput = document.getElementById('fileInput');
+    const fileNamesDiv = document.getElementById('fileNames');
+
+    // 選択されたファイルのリストを作成
+    const files = fileInput.files;
+    if (files.length > 0) {
+        let fileList = '<h3>選択されたファイル:</h3><ul>';
+        for (let i = 0; i < files.length; i++) {
+            fileList += `<li>${files[i].name}</li>`;
+        }
+        fileList += '</ul>';
+        fileNamesDiv.innerHTML = fileList;
+    } else {
+        fileNamesDiv.innerHTML = ''; // ファイルが選択されていない場合は消去
+    }
+});
