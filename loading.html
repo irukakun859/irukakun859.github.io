@@ -1,5 +1,3 @@
-<!-- loading.html -->
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column; /* 縦方向にアイテムを配置 */
   height: 100vh; /* 画面の高さに合わせる */
   background-color: #333; /* 背景色を設定 */
   color: #fff; /* テキスト色を設定 */
@@ -28,10 +27,7 @@
   width: 50px; /* アニメーションの幅を設定 */
   height: 50px; /* アニメーションの高さを設定 */
   animation: spin 2s linear infinite; /* アニメーションを適用 */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin-bottom: 20px; /* テキストとの間隔を設定 */
 }
 
 @keyframes spin {
@@ -39,13 +35,28 @@
   100% { transform: rotate(360deg); }
 }
 
+/* テキストのローディングアニメーション */
+.loading-text {
+  font-size: 24px;
+  color: #fff;
+  opacity: 0; /* 初期状態は透明 */
+  animation: fade-in-out 3s ease-in-out infinite;
+}
+
+/* テキストがフェードイン・フェードアウトするアニメーション */
+@keyframes fade-in-out {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
     </style>
 </head>
 <body>
     <div class="loading-container">
-        <div class="loading-spinner"></div>
-        <p>Loading....</p
-        </div>
+        <div class="loading-animation"></div>
+        <p class="loading-text">Loading....</p> <!-- ローディングアニメーションを追加 -->
+    </div>
 
     <script>
         setTimeout(function() {
