@@ -95,22 +95,18 @@ function downloadFile(event) {
 // ファイル削除の関数
 function deleteFile(event) {
     const index = event.target.getAttribute('data-index');
-    const password = prompt('ファイルを削除するにはパスワードを入力してください:');
 
-    // 正しいパスワードを確認
-    if (password === correctPassword) {
-        let fileList = JSON.parse(localStorage.getItem('fileList')) || [];
-        fileList.splice(index, 1); // ファイルをリストから削除
+    // ファイルリストを取得
+    let fileList = JSON.parse(localStorage.getItem('fileList')) || [];
+    fileList.splice(index, 1); // 指定のファイルを削除
 
-        // 更新されたファイルリストをローカルストレージに保存
-        localStorage.setItem('fileList', JSON.stringify(fileList));
+    // 更新されたファイルリストを保存
+    localStorage.setItem('fileList', JSON.stringify(fileList));
 
-        // ページを再読み込みしてファイルリストを更新
-        location.reload();
-    } else {
-        alert('パスワードが間違っています。');
-    }
+    // ページをリロードして反映
+    location.reload();
 }
+
 
 // ファイル選択時にファイル名を表示
 document.getElementById('fileInput').addEventListener('change', function () {
